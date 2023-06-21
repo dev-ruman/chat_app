@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "253919183325",
+    "project_id": "grey-shade-chat",
+    "storage_bucket": "grey-shade-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253919183325:android:27ddeb1fd23de83a1e7634",
+        "android_client_info": {
+          "package_name": "com.example.chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253919183325-de2edod8pmji3glqj6ckol50j8br0d9m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw5DdXVsndTVyGHcCvOsMeRTGH4EA5vW4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253919183325-de2edod8pmji3glqj6ckol50j8br0d9m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

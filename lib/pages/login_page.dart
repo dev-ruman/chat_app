@@ -1,7 +1,9 @@
 import 'package:chat_app/components/mega_button.dart';
 import 'package:chat_app/components/text_field.dart';
+import 'package:chat_app/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
@@ -16,7 +18,24 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController passWordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    void signIn() {}
+    void signIn() async {
+      final authService = Provider.of<AuthService>(context, listen: false);
+      try {
+        await authService.signInWithEmailAndPassword(
+            emailController.text, passWordController.text);
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            behavior: SnackBarBehavior.floating,
+            content: Container(
+              decoration: BoxDecoration(color: Colors.grey[900]),
+              child: Text(
+                e.toString(),
+                style: TextStyle(color: Colors.white),
+              ),
+            )));
+      }
+    }
+
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: SafeArea(
