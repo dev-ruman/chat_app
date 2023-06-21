@@ -3,20 +3,21 @@ import 'package:chat_app/components/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class LoginPage extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
   final void Function()? onTap;
-  const LoginPage({super.key, required this.onTap});
+  const SignUpPage({super.key, this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passWordController = TextEditingController();
+  TextEditingController confirmPassWordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    void signIn() {}
+    void signUp() {}
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: SafeArea(
@@ -44,29 +45,36 @@ class _LoginPageState extends State<LoginPage> {
                 obsecureText: true,
                 hintText: 'Enter password',
                 controller: passWordController),
-            const SizedBox(
+            SizedBox(
+              height: 15,
+            ),
+            CustomTextField(
+                obsecureText: true,
+                hintText: 'Confirm password',
+                controller: passWordController),
+            SizedBox(
               height: 25,
             ),
             MegaButton(
-              ontap: signIn,
-              title: 'Sign in',
+              ontap: signUp,
+              title: 'Sign up',
               color: Colors.grey.shade900,
               textColor: Colors.white,
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Not a member ?'),
+                Text('Already a member ?'),
                 const SizedBox(
                   width: 4,
                 ),
                 GestureDetector(
                   onTap: widget.onTap,
                   child: Text(
-                    'Sign up',
+                    'Sign in',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
