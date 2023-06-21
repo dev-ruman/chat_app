@@ -1,7 +1,9 @@
 import 'package:chat_app/components/mega_button.dart';
 import 'package:chat_app/components/text_field.dart';
+import 'package:chat_app/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 
 class SignUpPage extends StatefulWidget {
   final void Function()? onTap;
@@ -17,7 +19,12 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController confirmPassWordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    void signUp() {}
+    void signUp() {
+      final authService = Provider.of<AuthService>(context, listen: false);
+      authService.signUpWithEmailandPassword(
+          emailController.text, passWordController.text);
+    }
+
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: SafeArea(
@@ -56,7 +63,7 @@ class _SignUpPageState extends State<SignUpPage> {
               height: 25,
             ),
             MegaButton(
-              ontap: signUp,
+              onTap: signUp,
               title: 'Sign up',
               color: Colors.grey.shade900,
               textColor: Colors.white,

@@ -1,6 +1,7 @@
 import 'package:chat_app/components/mega_button.dart';
 import 'package:chat_app/components/text_field.dart';
 import 'package:chat_app/services/auth_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -21,9 +22,10 @@ class _LoginPageState extends State<LoginPage> {
     void signIn() async {
       final authService = Provider.of<AuthService>(context, listen: false);
       try {
-        await authService.signInWithEmailAndPassword(
+        await authService.signInWithEmailandPassword(
             emailController.text, passWordController.text);
-      } catch (e) {
+        print('done');
+      } on FirebaseAuthException catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             behavior: SnackBarBehavior.floating,
             content: Container(
@@ -33,6 +35,7 @@ class _LoginPageState extends State<LoginPage> {
                 style: TextStyle(color: Colors.white),
               ),
             )));
+        throw Exception(e);
       }
     }
 
@@ -67,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 25,
             ),
             MegaButton(
-              ontap: signIn,
+              onTap: signIn,
               title: 'Sign in',
               color: Colors.grey.shade900,
               textColor: Colors.white,

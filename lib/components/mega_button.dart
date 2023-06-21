@@ -4,18 +4,18 @@ class MegaButton extends StatelessWidget {
   final String title;
   final Color color;
   final Color textColor;
-  final void ontap;
+  final void Function()? onTap;
   const MegaButton(
       {super.key,
       required this.title,
       required this.color,
-      required this.ontap,
-      required this.textColor});
+      required this.textColor,
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => ontap,
+      onTap: () => onTap,
       child: Container(
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(

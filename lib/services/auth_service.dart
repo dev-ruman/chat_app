@@ -2,22 +2,22 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthService extends ChangeNotifier {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  Future<UserCredential> signInWithEmailAndPassword(
-      String email, String password) async {
+  Future<UserCredential> signInWithEmailandPassword(
+      String email, password) async {
     try {
-      Future<UserCredential> userCredential =
-          _auth.signInWithEmailAndPassword(email: email, password: password);
+      Future<UserCredential> userCredential = _firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password);
       return userCredential;
     } on FirebaseAuthException catch (e) {
       throw Exception(e.code);
     }
   }
 
-  Future<Type> signUpWithEmailAndPassword(String email, String password) async {
+  Future<Type> signUpWithEmailandPassword(String email, password) async {
     try {
-      await _auth.createUserWithEmailAndPassword(
+      await _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
       return UserCredential;
     } on FirebaseAuthException catch (e) {
